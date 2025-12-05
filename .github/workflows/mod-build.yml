@@ -26,7 +26,7 @@ jobs:
         run: ./gradlew --refresh-dependencies
 
       - name: Build Mod
-        run: ./gradlew clean build --no-daemon --stacktrace
+        run: ./gradlew clean build --no-daemon --stacktrace | grep -i "error" -A 5
 
       - name: Upload MOD artifact
         uses: actions/upload-artifact@v4
