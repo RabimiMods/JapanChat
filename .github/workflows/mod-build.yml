@@ -22,6 +22,9 @@ jobs:
       - name: Grant Gradle execution permission
         run: chmod +x gradlew
 
+      - name: ftgr
+        run: ./gradlew --refresh-dependencies
+
       - name: Build Mod
         run: ./gradlew clean build --no-daemon
 
