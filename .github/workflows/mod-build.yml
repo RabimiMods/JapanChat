@@ -2,7 +2,7 @@ name: Build Fabric Mod
 
 on:
   push:
-    branches: [mod]
+    branches: [ mod ]
   pull_request:
 
 jobs:
