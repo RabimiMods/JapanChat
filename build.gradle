@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.13-SNAPSHOT' // ← 安定版
+    id 'fabric-loom' version '1.13-SNAPSHOT'
     id 'java'
 }
 
@@ -23,15 +23,20 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
     withSourcesJar()
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs = ["src/main/java"]
+loom {
+    splitEnvironmentSourceSets()
+
+    runs {
+        client {
+            client = true
+            ideConfigGenerated = true
         }
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
 }
