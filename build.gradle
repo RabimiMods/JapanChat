@@ -31,7 +31,6 @@ loom {
 
     runs {
         client {
-            client = true
             ideConfigGenerated = true
         }
     }
