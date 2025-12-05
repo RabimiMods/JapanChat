@@ -22,11 +22,8 @@ jobs:
       - name: Grant Gradle execution permission
         run: chmod +x gradlew
 
-      - name: ftgr
-        run: ./gradlew --refresh-dependencies
-
       - name: Build Mod
-        run: ./gradlew clean build --no-daemon --stacktrace | grep -i "error" -A 5
+        run: ./gradlew clean build --no-daemon --refresh-dependencies
 
       - name: Upload MOD artifact
         uses: actions/upload-artifact@v4
