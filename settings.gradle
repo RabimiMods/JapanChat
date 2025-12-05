@@ -7,3 +7,5 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+rootProject.name = "JavaSkinChanger"
