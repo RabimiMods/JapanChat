@@ -29,12 +29,14 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
-    withSourcesJar()
 }
 
 loom {
-    splitEnvironmentSourceSets()
-
+    mods{
+        javaskinchanger{
+            sourceSet sourceSets.main
+        }
+    }
     runs {
         client {
             ideConfigGenerated = true
@@ -44,4 +46,5 @@ loom {
 
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
+    it.options.release = 21
 }
