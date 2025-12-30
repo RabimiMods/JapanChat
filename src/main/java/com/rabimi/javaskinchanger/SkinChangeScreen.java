@@ -116,7 +116,7 @@ public class SkinChangeScreen extends Screen {
                 BufferedImage img = ImageIO.read(new URL(skinUrl));
                 NativeImage nativeImage = NativeImage.read(toInputStream(img));
 
-                Identifier id = new Identifier("javaskinchanger", "mojang");
+                Identifier id = Identifier.of("javaskinchanger", "mojang");
 
                 client.execute(() -> {
                     client.getTextureManager().registerTexture(
@@ -135,7 +135,6 @@ public class SkinChangeScreen extends Screen {
 
     private void applySkinToPlayer(@Nullable ClientPlayerEntity player, Identifier skin) {
         if (player == null) return;
-        // Mixinで getSkinTexture() を差し替える
     }
 
     private InputStream toInputStream(BufferedImage img) throws IOException {
@@ -150,7 +149,7 @@ public class SkinChangeScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context);
+        renderBackground(context, mouseX, mouseY, delta);
         super.render(context, mouseX, mouseY, delta);
     }
 }
