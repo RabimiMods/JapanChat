@@ -10,7 +10,7 @@ public class SkinUtil {
 
         for (int x = 0; x < 64; x++) {
             for (int y = 0; y < 64; y++) {
-                int rgb = src.getPixelColor(x, y,);
+                int rgb = src.getPixelColor(x, y);
                 resized.setColor(x, y, rgb);
             }
         }
