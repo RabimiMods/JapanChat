@@ -23,6 +23,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.UUID;
 
 @Environment(EnvType.CLIENT)
 public class SkinChangeScreen extends Screen {
@@ -52,8 +53,9 @@ public class SkinChangeScreen extends Screen {
     }
 
     private void openSkinFile() {
+        long bufferPtr = MemoryUtil.memUTF8("*.png");
         PointerBuffer filters = MemoryUtil.memAllocPointer(1);
-        filters.put(MemoryUtil.memUTF8("*.png")).flip();
+        filters.put(bufferPtr).flip();
 
         String path = TinyFileDialogs.tinyfd_openFileDialog(
                 "Select Skin",
@@ -64,6 +66,7 @@ public class SkinChangeScreen extends Screen {
         );
 
         MemoryUtil.memFree(filters);
+        MemoryUtil.memFree(bufferPtr);
 
         if (path == null) return;
         applySkin(new File(path));
@@ -74,10 +77,11 @@ public class SkinChangeScreen extends Screen {
             BufferedImage img = ImageIO.read(file);
             NativeImage nativeImage = NativeImage.read(toInputStream(img));
 
-            Identifier id = new Identifier("javaskinchanger", "custom");
+            Identifier id = Identifier.of("javaskinchanger", "custom");
+            
             client.getTextureManager().registerTexture(
                     id,
-                    new NativeImageBackedTexture(nativeImage)
+                    new NativeImageBackedTexture(UUID.randomUUID()::toString, nativeImage)
             );
 
             currentCustomSkin = id;
@@ -121,7 +125,7 @@ public class SkinChangeScreen extends Screen {
                 client.execute(() -> {
                     client.getTextureManager().registerTexture(
                             id,
-                            new NativeImageBackedTexture(nativeImage)
+                            new NativeImageBackedTexture(UUID.randomUUID()::toString, nativeImage)
                     );
                     currentCustomSkin = id;
                     applySkinToPlayer(client.player, id);
@@ -149,7 +153,6 @@ public class SkinChangeScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context, mouseX, mouseY, delta);
         super.render(context, mouseX, mouseY, delta);
     }
 }
