@@ -53,7 +53,7 @@ public class SkinChangeScreen extends Screen {
     }
 
     private void openSkinFile() {
-        long bufferPtr = MemoryUtil.memUTF8("*.png");
+        ByteBuffer buffer = MemoryUtil.memUTF8("*.png");
         PointerBuffer filters = MemoryUtil.memAllocPointer(1);
         filters.put(bufferPtr).flip();
 
@@ -66,7 +66,7 @@ public class SkinChangeScreen extends Screen {
         );
 
         MemoryUtil.memFree(filters);
-        MemoryUtil.memFree(bufferPtr);
+        MemoryUtil.memFree(buffer);
 
         if (path == null) return;
         applySkin(new File(path));
