@@ -3,11 +3,11 @@
   "id": "javaskinchanger",
   "version": "1.6.1",
   "name": "JavaSkinChanger",
-  "description": "Change Minecraft skins easily with RabimiMod",
+  "description": "Change Minecraft skins easily",
   "authors": ["RabimiMods"],
-    "contact": {
-    "homepage": "https://RabimiMods.github.io/JavaSkinChanger",
-    "sources": "https://github.com/RabimiApps/JavaSkinChanger/tree/mod"
+  "contact": {
+    "homepage": "https://RabimiApps.github.io/JavaSkinChanger",
+    "sources": "https://github.com/RabimiMods/JavaSkinChanger/"
   },
   "entrypoints": {
     "client": [
@@ -18,10 +18,8 @@
     "fabricloader": ">=0.15.0",
     "minecraft": "1.21.x",
     "fabric-api": "*"
-  }
- {
+  },
   "mixins": [
     "javaskinchanger.mixins.json"
   ]
- }
 }
