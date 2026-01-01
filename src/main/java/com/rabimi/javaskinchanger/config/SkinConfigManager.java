@@ -41,3 +41,6 @@ public class SkinConfigManager {
         }
     }
 }
+class SkinConfig {
+    public List<String> skinPaths = new ArrayList<>();
+}
