@@ -1,25 +1,38 @@
-public static void open(String title, Consumer<String> callback) {
-    MinecraftClient.getInstance().executeAsync(() -> {
-        // StringをByteBufferに変換
-        var titleBuf = MemoryUtil.memUTF8(title);
-        var filterDescription = MemoryUtil.memUTF8("PNG Image");
-        var filterBuf = MemoryUtil.memAllocPointer(1);
-        filterBuf.put(MemoryUtil.memUTF8("*.png")).flip();
+package com.rabimi.javaskinchanger;
 
-        String path = TinyFileDialogs.tinyfd_openFileDialog(
-                titleBuf,
-                null,
-                filterBuf,
-                filterDescription,
-                false
-        );
+import net.minecraft.client.MinecraftClient;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import org.lwjgl.system.MemoryUtil;
+import java.nio.ByteBuffer;
+import org.lwjgl.PointerBuffer;
+import java.util.function.Consumer;
 
-        // メモリ解放（重要）
-        MemoryUtil.memFree(filterBuf.get(0));
-        MemoryUtil.memFree(filterBuf);
-        MemoryUtil.memFree(titleBuf);
-        MemoryUtil.memFree(filterDescription);
+public class FileDialogHelper {
 
-        callback.accept(path);
-    });
+    public static void open(String title, Consumer<String> callback) {
+        MinecraftClient.getInstance().executeAsync(() -> {
+            ByteBuffer titleBuf = MemoryUtil.memUTF8(title);
+            ByteBuffer filterDesc = MemoryUtil.memUTF8("PNG Image");
+            
+            PointerBuffer filterPatterns = MemoryUtil.memAllocPointer(1);
+            ByteBuffer pngBuf = MemoryUtil.memUTF8("*.png");
+            filterPatterns.put(pngBuf);
+            filterPatterns.flip();
+
+            String path = TinyFileDialogs.tinyfd_openFileDialog(
+                    titleBuf,
+                    null,
+                    filterPatterns,
+                    filterDesc,
+                    false
+            );
+
+            MemoryUtil.memFree(pngBuf);
+            MemoryUtil.memFree(filterPatterns);
+            MemoryUtil.memFree(filterDesc);
+            MemoryUtil.memFree(titleBuf);
+
+            callback.accept(path);
+        });
+    }
 }
