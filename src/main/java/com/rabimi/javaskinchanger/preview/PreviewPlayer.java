@@ -4,21 +4,22 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.GameMode;
 
 public class PreviewPlayer extends ClientPlayerEntity {
-
     private Identifier skinId;
 
     public PreviewPlayer(ClientWorld world, Identifier skin) {
-        super(MinecraftClient.getInstance(), world,
-              MinecraftClient.getInstance().getNetworkHandler().getProfile(),
-              null);
+        // 1.21のコンストラクタ引数に対応
+        super(MinecraftClient.getInstance(), world, 
+              MinecraftClient.getInstance().getNetworkHandler(), 
+              MinecraftClient.getInstance().getStats(), 
+              MinecraftClient.getInstance().getRecipeBook(), 
+              false, false);
         this.skinId = skin;
     }
 
     @Override
-    public Identifier getSkinTexture() {
+    public Identifier getSkinId() { // メソッド名が getSkinId に変更されています
         return skinId;
     }
 
