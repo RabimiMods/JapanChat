@@ -26,8 +26,10 @@ public class SkinConfigManager {
                 save();
                 return;
             }
-            SkinConfigManager data = GSON.fromJson(new FileReader(configFile), SkinConfig.class);
-            if (data != null) skinPaths = data.skinPaths;
+            SkinConfig data = GSON.fromJson(new FileReader(configFile), SkinConfig.class);
+            if (data != null && data.skinPaths != null) {
+                skinPaths = data.skinPaths;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -35,12 +37,15 @@ public class SkinConfigManager {
 
     public static void save() {
         try (FileWriter writer = new FileWriter(configFile)) {
-            GSON.toJson(new SkinConfigManager(), writer);
+            SkinConfig data = new SkinConfig();
+            data.skinPaths = skinPaths;
+            GSON.toJson(data, writer);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
+
 class SkinConfig {
     public List<String> skinPaths = new ArrayList<>();
 }
