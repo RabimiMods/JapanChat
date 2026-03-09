@@ -15,7 +15,7 @@ repositories {
         name = "SonatypeSnapshots"
         url = "https://oss.sonatype.org/content/repositories/snapshots/"
     }
-    maven { url "https://www.cursemaven.com" }
+    maven { url = "https://keksuccino.github.io/maven/" }
     mavenCentral()
 }
 
