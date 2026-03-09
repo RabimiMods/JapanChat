@@ -4,8 +4,9 @@ pluginManagement {
         maven { url = "https://maven.terraformersmc.com/" }
         maven { url = "https://oss.sonatype.org/content/repositories/snapshots/" }
         gradlePluginPortal()
+        maven { url = "https://keksuccino.github.io/maven/" }
         mavenCentral()
     }
 }
 
-rootProject.name = "JavaSkinChanger"
+rootProject.name = "MCinWeb"
