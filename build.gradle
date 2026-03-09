@@ -25,6 +25,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:0.18.4"
     modImplementation "net.fabricmc.fabric-api:fabric-api:0.141.3+1.21.11"
 }
+    modImplementation "de.keksuccino:mcef-fabric:2.2.0-1.21.11"
 
 java {
     toolchain {
