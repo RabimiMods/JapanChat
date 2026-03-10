@@ -26,10 +26,9 @@ public class Mcinweb implements ModInitializer {
                 "category.mcinweb"
         ));
 
-        // 毎チック、キーが押されたか監視する
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (openBrowserKey.wasPressed()) 
-                client.setScreen(new WebBrowserScreen());
+            while (openBrowserKey.wasPressed()) {
+                LOGGER.info("Browser key pressed!");
             }
         });
     }
