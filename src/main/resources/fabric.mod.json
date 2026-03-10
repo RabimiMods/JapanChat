@@ -11,15 +11,12 @@
   },
   "entrypoints": {
     "client": [
-      "com.rabimi.javaskinchanger.JavaSkinChanger"
+      "com.rabimi.mcinweb.Mcinweb"
     ]
   },
   "depends": {
-    "fabricloader": ">=0.15.0",
+    "fabricloader": ">=0.18.4",
     "minecraft": "1.21.x",
     "fabric-api": "*"
   },
-  "mixins": [
-    "javaskinchanger.mixins.json"
-  ]
 }
