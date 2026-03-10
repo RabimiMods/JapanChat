@@ -1,7 +1,7 @@
 package com.rabimi.mcinweb;
 
-import de.keksuccino.mcef.Main;
-import de.keksuccino.mcef.browser.Browser;
+import com.cinemamod.mcef.MCEF;
+import de.keksuccino.mcef.MCEFBrowser;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
