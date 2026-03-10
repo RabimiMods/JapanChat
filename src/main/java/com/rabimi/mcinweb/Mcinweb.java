@@ -29,9 +29,9 @@ public class Mcinweb implements ClientModInitializer {
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (openBrowserKey.wasPressed()) {
-                LOGGER.info("Browser key pressed!");
-                // 画面遷移のコードをここに入れる
-            }
+                if (client != null) {
+                    client.setScreen(new WebBrowserScreen())
+                }
         });
     }
 }
