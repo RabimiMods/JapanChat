@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "id": "javaskinchanger",
-  "version": "1.6.1",
-  "name": "JavaSkinChanger",
-  "description": "Change Minecraft skins easily",
+  "id": "mcinweb",
+  "version": "1.0.0",
+  "name": "MCinWeb",
+  "description": "Minecraft in Web",
   "authors": ["RabimiMods"],
   "contact": {
-    "homepage": "https://RabimiApps.github.io/JavaSkinChanger",
-    "sources": "https://github.com/RabimiMods/JavaSkinChanger/"
+    "homepage": "https://github.com/RabimiMod/MCinWeb",
+    "sources": "https://github.com/RabimiMods/MCinWeb/"
   },
   "entrypoints": {
     "client": [
