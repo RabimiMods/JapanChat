@@ -1,13 +1,15 @@
 package com.rabimi.mcinweb;
 
+// クラス名を MCEFBrowser に合わせてインポート
 import com.cinemamod.mcef.MCEF;
-import de.keksuccino.mcef.MCEFBrowser;
+import com.cinemamod.mcef.MCEFBrowser; 
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
 public class WebBrowserScreen extends Screen {
-    private Browser browser;
+    // ここを Browser から MCEFBrowser に変更
+    private MCEFBrowser browser;
 
     protected WebBrowserScreen() {
         super(Text.literal("Web Browser"));
@@ -16,11 +18,10 @@ public class WebBrowserScreen extends Screen {
     @Override
     protected void init() {
         super.init();
-        // ブラウザの初期化（URLを指定）
         if (this.browser == null) {
-            this.browser = Main.BROWSER_SERVICE.createBrowser("https://www.google.com");
+            // MCEFBrowser 型として作成
+            this.browser = MCEF.BROWSER_SERVICE.createBrowser("https://www.google.com");
         }
-        // 画面サイズに合わせてブラウザのサイズを調整
         if (this.browser != null) {
             this.browser.resize(this.width, this.height);
         }
@@ -29,15 +30,15 @@ public class WebBrowserScreen extends Screen {
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
-        // ブラウザを描画
         if (this.browser != null) {
+            // 描画メソッド名は draw であることが多いですが、
+            // もしエラーが出る場合は render か paint か確認が必要です
             this.browser.draw(context, mouseX, mouseY);
         }
     }
 
     @Override
     public void close() {
-        // 画面を閉じるときにブラウザを破棄（メモリリーク防止）
         if (this.browser != null) {
             this.browser.close();
         }
@@ -46,6 +47,6 @@ public class WebBrowserScreen extends Screen {
 
     @Override
     public boolean shouldPause() {
-        return false; // ブラウザを開いている間もゲームを止めない
+        return false;
     }
 }
