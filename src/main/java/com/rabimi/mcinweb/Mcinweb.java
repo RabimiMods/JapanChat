@@ -3,7 +3,7 @@ package com.rabimi.mcinweb;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.option.KeyBinding; // Minecraft内部ではKeyBinding（マッピングによりKeyMapping）
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
@@ -17,22 +17,20 @@ public class Mcinweb implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        LOGGER.info("MCInWeb initializing on client...");
+        LOGGER.info("MCInWeb initializing with Official Mappings...");
 
-        // 1.21.1で最も安全なキーバインド登録方法
+        // ドキュメントの例に完全に合わせた記述
         openBrowserKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.mcinweb.open",             // 翻訳キー
-                InputUtil.Type.KEYSYM,          // 入力タイプ
-                GLFW.GLFW_KEY_B,                // デフォルトキー
-                "category.mcinweb"              // カテゴリー (Stringで通らない場合は下の補足参照)
+                "key.mcinweb.open", 
+                InputUtil.Type.KEYSYM, 
+                GLFW.GLFW_KEY_B, 
+                KeyBinding.Category.MISC // Category列挙型を使用
         ));
-
-        // もし上のコードでまた Category エラーが出る場合は、最後の引数を以下に書き換えてください：
-        // KeyBinding.MISC_CATEGORY
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (openBrowserKey.wasPressed()) {
                 LOGGER.info("Browser key pressed!");
+                // 画面遷移のコードをここに入れる
             }
         });
     }
