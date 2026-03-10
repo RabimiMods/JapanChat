@@ -15,7 +15,12 @@ repositories {
         name = "SonatypeSnapshots"
         url = "https://oss.sonatype.org/content/repositories/snapshots/"
     }
-    maven { url = "https://keksuccino.github.io/maven/" }
+    maven { 
+        url = "https://keksuccino.github.io/maven/"
+        content {
+            includeGroup "de.keksuccino"
+        }
+    }
     mavenCentral()
 }
 
