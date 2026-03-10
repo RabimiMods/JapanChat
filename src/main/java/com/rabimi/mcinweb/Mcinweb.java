@@ -20,10 +20,9 @@ public class Mcinweb implements ModInitializer {
         LOGGER.info("MCInWeb initializing...");
 
         openBrowserKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.mcinweb.open", 
-                InputUtil.Type.KEYSYM, 
-                GLFW.GLFW_KEY_B, 
-                "category.mcinweb"
+            "key.mcinweb.open", 
+            GLFW.GLFW_KEY_B,
+            "category.mcinweb"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
