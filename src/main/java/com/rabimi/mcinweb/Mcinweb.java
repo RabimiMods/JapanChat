@@ -30,7 +30,7 @@ public class Mcinweb implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (openBrowserKey.wasPressed()) {
                 if (client != null) {
-                    client.setScreen(new WebBrowserScreen())
+                    client.setScreen(new WebBrowserScreen());
                 }
         });
     }
