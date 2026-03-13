@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "id": "mcinweb",
+  "id": "japanchat",
   "version": "1.0.0",
-  "name": "MCinWeb",
-  "description": "Minecraft in Web",
+  "name": "JapanChat",
+  "description": "自分用",
   "authors": ["RabimiMods"],
   "contact": {
-    "homepage": "https://github.com/RabimiMod/MCinWeb",
-    "sources": "https://github.com/RabimiMods/MCinWeb/"
+    "homepage": "https://github.com/RabimiMod/JapanChat",
+    "sources": "https://github.com/RabimiMods/JapanChat/"
   },
   "entrypoints": {
     "client": [
-      "com.rabimi.mcinweb.Mcinweb"
+      "com.rabimi.japanchat.Japanchat"
     ]
   },
   "depends": {
