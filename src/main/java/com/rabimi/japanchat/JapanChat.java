@@ -13,15 +13,15 @@ public class JapanChat implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        f10Key = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+        key = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.japanchat.open", 
             InputUtil.Type.KEYSYM, 
             GLFW.GLFW_KEY_F10, 
-            "key.category.japanchat"
+            "category.japanchat"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (f10Key.wasPressed()) {
+            while (key.wasPressed()) {
                 if (client.currentScreen instanceof ChatScreen) {
                     InputWindow.open((text) -> {
                         client.execute(() -> {
