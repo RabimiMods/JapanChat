@@ -16,7 +16,7 @@ public class JapanChat implements ClientModInitializer {
         key = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.japanchat.open", 
             InputUtil.Type.KEYSYM, 
-            GLFW.GLFW_KEY_F10, 
+            GLFW.GLFW_KEY_Z, 
             KeyBinding.Category.MULTIPLAYER
         ));
 
@@ -31,7 +31,7 @@ public class JapanChat implements ClientModInitializer {
                             client.setScreen(null);
                         });
                     });
-                    System.out.println("F10 Pressed!");
+                    System.out.println("Z Pressed!");
                 }
             }
         });
