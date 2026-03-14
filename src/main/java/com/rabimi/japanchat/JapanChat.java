@@ -17,7 +17,7 @@ public class JapanChat implements ClientModInitializer {
             "key.japanchat.open", 
             InputUtil.Type.KEYSYM, 
             GLFW.GLFW_KEY_F10, 
-            "category.japanchat"
+            "key.category.japanchat"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
