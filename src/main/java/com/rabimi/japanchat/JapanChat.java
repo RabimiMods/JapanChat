@@ -9,7 +9,7 @@ import net.minecraft.client.gui.screen.ChatScreen;
 import org.lwjgl.glfw.GLFW;
 
 public class JapanChat implements ClientModInitializer {
-    private static KeyBinding f10Key;
+    private static KeyBinding key;
 
     @Override
     public void onInitializeClient() {
@@ -17,7 +17,7 @@ public class JapanChat implements ClientModInitializer {
             "key.japanchat.open", 
             InputUtil.Type.KEYSYM, 
             GLFW.GLFW_KEY_F10, 
-            "category.japanchat"
+            "key.categories.multiplayer"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
