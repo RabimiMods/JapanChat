@@ -31,6 +31,7 @@ public class JapanChat implements ClientModInitializer {
                             client.setScreen(null);
                         });
                     });
+                    System.out.println("F10 Pressed!");
                 }
             }
         });
